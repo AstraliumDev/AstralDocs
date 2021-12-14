@@ -4,7 +4,7 @@
 ![image](https://user-images.githubusercontent.com/77334306/146064668-abc41204-a41e-40f8-a098-6a5a992ad5be.png)
 ![image](https://user-images.githubusercontent.com/77334306/146064892-06b3d01d-02fe-48cb-8618-08536de0ad3f.png)
 
-### Создайте свой личный Minecraft Проект с использованием провинутой и удобной информации`
+### Создайте свой личный Minecraft Проект с использованием продвинутой и удобной информации`
 
 ```
 Версия документа v1.5
