@@ -3,21 +3,34 @@
 ![image](https://user-images.githubusercontent.com/77334306/146064955-f7458d87-38c0-40dd-8634-e27dc2a150b5.png)
 ![image](https://user-images.githubusercontent.com/77334306/146064668-abc41204-a41e-40f8-a098-6a5a992ad5be.png)
 ![image](https://user-images.githubusercontent.com/77334306/146064892-06b3d01d-02fe-48cb-8618-08536de0ad3f.png)
+![image](https://user-images.githubusercontent.com/77334306/146582420-c57493a7-decf-49a8-b248-e29add8f8afe.png)
+![image](https://user-images.githubusercontent.com/77334306/146582380-00aee364-fe49-4a47-bd7c-fdbf1a10412a.png)
+
 
 ### Создайте свой личный Minecraft Проект с использованием продвинутой и удобной информации`
 
 ```
-Версия документа v1.5
+Версия документа v1.6
 
 * Это не последние изменения данного документа, вскоре здесь будет появляться новая информация *
 
 Некоторые рекомендации из пунктов могут работать некорректно на некоторых системах
 За подробной поддержкой обращайтесь в мой дискорд - https://discord.gg/7XkGYJbtZg
 
-Для полноценной настройки рекомендую использовать Adoptium OpenJDK 17 LTS Java
+Для полноценной настройки рекомендую использовать Adoptium OpenJDK LTS Java
 
 <  !  >  ПОЖАЛУЙСТА ЧИТАЙТЕ ВНИМАТЕЛЬНО И НЕ ПРЕДЪЯВЛЯЙТЕ ПРЕТЕНЗИЙ РАЗРАБОТЧИКУ  <  !  >
 ```
+# Основные ссылки на контент
+[OpenJDK](https://adoptium.net/) __| Java |__
+
+[FabricMC](https://fabricmc.net/) __| Fabric |__
+
+[PaperMC](https://papermc.io/) __| Server Software |__
+
+[PurPur](https://purpurmc.org/) __| Server Software |__
+
+[Velocity](https://velocitypowered.com/) __| Proxy Software |__
 
 # Настройка выделенных и виртуальных серверов
 ### Базовые компоненты, архивация файлов, настройка безопасности
@@ -387,3 +400,24 @@ zip -r sb.zip /home/SkyBlock
 
 # Либо используйте встроенный tar
 ```
+
+# О создании игрового сервера в Minecraft
+### Рекомендуемое ПО для запуска сервера
+- Если вы планируете разрабатывать модовый сервер, то определенно рекомендую __[Fabric](https://fabricmc.net/)__
+> Моды можно найти [здесь](https://modrinth.com/mods) или [здесь](https://www.curseforge.com/minecraft/mc-mods)
+- Если вы планируете разрабатывать обычный сервер, то определенно рекомендую __[PaperMC](https://papermc.io/) | [PurPur](https://purpurmc.org/)__
+> Рекомендуемое ПО Для разработки ___Proxy___ сервера __[Velocity](https://velocitypowered.com/) | [Velocity с сайта PaperMC](https://papermc.io/)__
+
+### VDS/DEDICATED или PANEL HOSTING?
+- __Автор__ данного поста не поддерживает панельные хосты из-за их ограничений пользования. Если вы хотите создать качественный Проект, то пожалуйста придерживайтесь использовать выделенных или виртуальных серверо с полным доступом к __SSH__ протоколу
+
+# Об авторе
+### Какое ПО используется для разработок игровых проектов (Сервер-сайд)
+- Я пользуюсь этими ПО: __[Fabric](https://fabricmc.net/) | [PaperMC](https://papermc.io/) | [PurPur](https://purpurmc.org/) | [Velocity](https://velocitypowered.com/)__
+### Какое ПО используется для разработок игровых клиентов (Клиент-сайд)
+- Я пользуюсь этим ПО: __[Fabric](https://fabricmc.net/)__
+### Какое ПО используется для подключения к серверу по SSH, SFTP
+- Я пользуюсь этими ПО: [Termius (SSH Полностью бесплано, SFTP Пробная версия, потом платно](https://termius.com/) [WinSCP (SFTP Полностью бесплатно)](https://winscp.net/eng/download.php)
+### На чем создаю Проекты (ПК/Ноут, OS)
+- Для многих это покажется странно, но я разрабатываю все свои Проекты на ноутбуке 
+- Работаю в данный момент на Windows 11 (Планирую создать образ для Linux)
