@@ -5,6 +5,8 @@
 ![image](https://user-images.githubusercontent.com/77334306/146064892-06b3d01d-02fe-48cb-8618-08536de0ad3f.png)
 ![image](https://user-images.githubusercontent.com/77334306/146582420-c57493a7-decf-49a8-b248-e29add8f8afe.png)
 ![image](https://user-images.githubusercontent.com/77334306/146582380-00aee364-fe49-4a47-bd7c-fdbf1a10412a.png)
+![image](https://user-images.githubusercontent.com/77334306/146998663-f98e5ea0-cf90-4f39-a34a-1f20a2afe4d0.png)
+
 
 
 ### Создайте свой личный Minecraft Проект с использованием продвинутой и удобной информации`
@@ -29,6 +31,8 @@
 [PaperMC](https://papermc.io/) __| Server Software |__
 
 [PurPur](https://purpurmc.org/) __| Server Software |__
+
+[Pufferfish](https://ci.pufferfish.host/) __| Server Software |__
 
 [Velocity](https://velocitypowered.com/) __| Proxy Software |__
 
@@ -413,7 +417,8 @@ zip -r sb.zip /home/SkyBlock
 
 # Об авторе
 ### Какое ПО используется для разработок игровых проектов (Сервер-сайд)
-- Я пользуюсь этими ПО: __[Fabric](https://fabricmc.net/) | [PaperMC](https://papermc.io/) | [PurPur](https://purpurmc.org/) | [Velocity](https://velocitypowered.com/)__
+- Я пользуюсь этими ПО: __[Fabric](https://fabricmc.net/) | [PaperMC](https://papermc.io/) | [PurPur](https://purpurmc.org/) | [Pufferfish](https://ci.pufferfish.host/) | [Velocity](https://velocitypowered.com/)__
+> __Pufferfish Links:__ _[Docs](https://docs.pufferfish.host/) | [Github](https://github.com/pufferfish-gg/Pufferfish)_
 ### Какое ПО используется для разработок игровых клиентов (Клиент-сайд)
 - Я пользуюсь этим ПО: __[Fabric](https://fabricmc.net/)__
 ### Какое ПО используется для подключения к серверу по SSH, SFTP
