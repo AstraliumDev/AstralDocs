@@ -405,6 +405,67 @@ zip -r sb.zip /home/SkyBlock
 # Либо используйте встроенный tar
 ```
 
+### MySQL - Для Linux
+```
+# Установка
+sudo apt install mysql-server
+
+# Вход в саму БД
+sudo mysql
+
+# Создать БД
+
+CREATE DATABASE IF NOT EXISTS DATABASE_NAME;
+
+# Удалить БД
+
+DROP DATABASE IF EXISTS DATABASE_NAME;
+
+# Список БД
+
+SHOW DATABASES;
+
+# Создать юзера
+
+CREATE USER IF NOT EXISTS 'DATABASE_USER'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'DATABASE_USER_NEW_PASSWORD';
+
+# Изменить пароль юзеру
+
+ALTER USER 'DATABASE_USER'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'DATABASE_USER_NEW_PASSWORD';
+
+# Удалить юзера
+
+DROP USER IF EXISTS 'DATABASE_USER'@'localhost';
+
+# Список юзеров
+
+SELECT user, host FROM mysql.user;
+
+# Выдать права юзеру на определенную БД
+
+GRANT ALL PRIVILEGES ON database_name.table_name TO 'DATABASE_USER'@'localhost';
+
+# Выдать все права юзеру на все БД
+
+GRANT ALL PRIVILEGES ON *.* TO 'DATABASE_USER'@'localhost';
+
+# Список всех прав юзера БД
+
+SHOW GRANTS FOR 'DATABASE_USER'@'localhost';
+
+# Сделать дамп всей БД
+
+mysqldump -uDATABASE_USER -pDATABASE_USER_PASSWORD --all-databases > DATABASE_CUSTOM_DAMP_NAME.sql
+
+# Сделать дамп определенной БД
+
+mysqldump -uDATABASE_USER -pDATABASE_USER_PASSWORD DATABASE_NAME > DATABASE_CUSTOM_DAMP_NAME.sql
+
+# Если вы хотите скопировать ваш дамп БД в другое место
+
+cp /var/lib/mysql/DATABASE_CUSTOM_DAMP_NAME.sql /home/testuser/
+```
+
 # О создании игрового сервера в Minecraft
 ### Рекомендуемое ПО для запуска сервера
 - Если вы планируете разрабатывать модовый сервер, то определенно рекомендую __[Fabric](https://fabricmc.net/)__
