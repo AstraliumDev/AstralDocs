@@ -455,11 +455,11 @@ SHOW GRANTS FOR 'DATABASE_USER'@'localhost';
 
 # Сделать дамп всей БД
 
-mysqldump -uDATABASE_USER -pDATABASE_USER_PASSWORD --all-databases > DATABASE_CUSTOM_DAMP_NAME.sql
+mysqldump -uDATABASE_USER -pDATABASE_USER_PASSWORD --all-databases > DATABASE_CUSTOM_DUMP_NAME.sql
 
 # Сделать дамп определенной БД
 
-mysqldump -uDATABASE_USER -pDATABASE_USER_PASSWORD DATABASE_NAME > DATABASE_CUSTOM_DAMP_NAME.sql
+mysqldump -uDATABASE_USER -pDATABASE_USER_PASSWORD DATABASE_NAME > DATABASE_CUSTOM_DUMP_NAME.sql
 
 # Если вы хотите скопировать ваш дамп БД в другое место
 
