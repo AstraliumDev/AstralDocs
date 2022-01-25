@@ -8,7 +8,7 @@
 ![image](https://user-images.githubusercontent.com/77334306/146998663-f98e5ea0-cf90-4f39-a34a-1f20a2afe4d0.png)
 
 
-
+RU
 ### Создайте свой личный Minecraft Проект с использованием продвинутой и удобной информации`
 
 ```
@@ -506,3 +506,514 @@ scp USER@IP:/путь_для_файла_на_другой_сервер назв�
 ### На чем создаю Проекты (ПК/Ноут, OS)
 - Для многих это покажется странно, но я разрабатываю все свои Проекты на ноутбуке 
 - Работаю в данный момент на Windows 11 (Планирую создать образ для Linux)
+
+
+EN
+# Advanced server creation
+
+![image](https://user-images.githubusercontent.com/77334306/146064955-f7458d87-38c0-40dd-8634-e27dc2a150b5.png)
+![image](https://user-images.githubusercontent.com/77334306/146064668-abc41204-a41e-40f8-a098-6a5a992ad5be.png)
+![image](https://user-images.githubusercontent.com/77334306/146064892-06b3d01d-02fe-48cb-8618-08536de0ad3f.png)
+![image](https://user-images.githubusercontent.com/77334306/146582420-c57493a7-decf-49a8-b248-e29add8f8afe.png)
+![image](https://user-images.githubusercontent.com/77334306/146582380-00aee364-fe49-4a47-bd7c-fdbf1a10412a.png)
+![image](https://user-images.githubusercontent.com/77334306/146998663-f98e5ea0-cf90-4f39-a34a-1f20a2afe4d0.png)
+
+
+
+### Create your personal Minecraft Project using advanced and user-friendly information`
+
+```
+Document version v1.8
+
+* These are not the latest changes to this document, new information will appear here soon *
+
+Some recommendations from the points may not work correctly on some systems.
+For detailed support, please contact my discord - https://discord.gg/7XkGYJbtZg
+
+For full customization, I recommend using Adoptium OpenJDK LTS Java
+
+<! > PLEASE READ CAREFULLY AND DO NOT MAKE CLAIMS TO THE DEVELOPER < ! >
+```
+# Main content links
+[OpenJDK](https://adoptium.net/) __| Java |__
+
+[FabricMC](https://fabricmc.net/) __| Fabric |__
+
+[PaperMC](https://papermc.io/) __| Server Software |__
+
+[PurPur](https://purpurmc.org/) __| Server Software |__
+
+[Pufferfish](https://ci.pufferfish.host/) __| Server Software |__
+
+[Velocity](https://velocitypowered.com/) __| Proxy Software |__
+
+# Setting up dedicated and virtual servers
+### Basic components, file archiving, security setup
+
+- Basic components for your server
+- All commands are executed as ~ root user, or via sudo
+
+### Update machine packages
+```
+sudo apt update
+
+sudo apt upgrade
+```
+### Linux specific (CentOS 8)
+```
+yum
+
+yum update
+
+yum upgrade
+
+dnf
+
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+
+dnf install htop
+
+dnf installscreen
+```
+
+### Useful utilities for your server
+```
+sudo apt install htop - A utility to monitor all running processes (Similar to top, but prettier)
+
+sudo apt install screen - An essential tool for creating sessions on your server machine
+
+sudo apt install zip unzip - Utility to archive files to .zip
+
+sudo apt install iptables - Useful utility to configure IPv4 and IPv6 flags (Firewall) (Can manage ports)
+
+apt install neofetch - A utility to nicely display your OS and some options
+```
+- Usually pre-installed on Ubuntu, but in our case Debian OS. Executes commands as root
+
+```
+apt install sudo
+```
+
+- If you need to confirm the installation, then confirm by sending the console Y (y)
+
+
+
+### Oracle Cloud specific - open UDP/TCP port 25565
+```
+sudo apt install firewalld
+
+sudo firewall-cmd --permanent --zone=public --add-port=25565/tcp
+
+sudo firewall-cmd --permanent --zone=public --add-port=25565/udp
+
+sudo firewall-cmd --reload
+
+# Important! In the server.properties config, you need to specify IP: 0.0.0.0
+# If you have Bungeecord / Velocity, specify in the Bungeecord / Velocity IP config: 0.0.0.0:25565
+```
+### Install Java on your server machine
+- You will learn how to easily install and remove Java from your server
+- To get started, go to the SFTP client and go to the ~ / opt section (You can use any, but this one as a basis)
+- Linux originally came up with a command to pack archives and unpack archives
+- You can use the tar command with the following options:
+```
+# -c | --create - create an archive
+# -a | --auto-compress - additionally compress the archive with a compressor that is automatically determined by the archive extension.
+# -r | --append - append files to the end of an existing archive
+#-x | --extract, --get - extract files from archive
+# -f | --file - specify the name of the archive
+# -t | --list - display a list of files and folders in the archive
+# -v | --verbose - list processed files
+# -u | --update - Update archive with new files
+# -d | --diff, --delete — Check if archives exist, delete file from archive
+```
+
+- An example of moving files around a Linux system (Don't just run these commands!)
+```
+# < ! > NOT REQUIRED COMMANDS < ! >
+
+mv /home/others/Test /others2
+
+# You can also use the * -v flag to see detailed information about the process
+# ~ - tilde, tells the system that this is the root directory (~)
+# i.e. ~/others2 etc
+
+mv -v ~/home/others/Test ~/others2
+
+
+
+# You can also use the sudo prefix to the mv command
+
+# Now you are familiar with the command to move files, but it is recommended to check the material again
+# Try these commands on some empty server, or you can install WSL2 on your system
+# Recommended OS distribution - Ubuntu, Debian
+```
+
+### Begin the Java installation process on your server
+- Installing and unpacking the archive using "tar" - built-in archiver in Linux
+```
+# The archive should already be installed / moved to the directory you selected
+# To install the archive, you can use the SFTP file transfer application
+# WinSCP, or download directly from the console - wget <url>
+# Write the command without <>
+
+# Now let's unpack it - after unpacking, a folder with our Java will appear
+# Run the command:
+
+tar xf NAME.tar.gz
+
+# Usually all packages have a .tar.gz extension
+# But we're just using "tar" ;)
+
+# For example, an archive with Java is called:
+OpenJDK16U-jdk_x64_linux_hotspot_16.0.1_9.tar.gz
+
+# < ! > The name may be different, please find out < ! >
+
+# To unpack the archive, you need to enter only one command:
+
+tar xf OpenJDK16U-jdk_x64_linux_hotspot_16.0.1_9.tar.gz
+
+# At the time of writing the last Java, which I personally tested on my Projects
+# Run these commands to download the archive:
+
+cd DIRECTORY
+
+sudo wget LINK
+
+... Further unpacking commands and all the actions above
+
+# LINK to take from here - https://adoptium.net/releases.html
+
+# If everything is correct, then you have successfully unpacked Java into the directory
+```
+
+### Creating a "Link" for our Java file in the Java folder
+- You can learn in detail about the ln command and its parameters
+```
+# Links are the same as a shortcut, those who have ever had a Windows / MacOS system 
+# May know about creating a shortcut by right-clicking on a file
+# But we don't have an interface, so we'll use the "ln" command
+# *By the way, you can also make links through WinSCP - SFTP Client, FTP. . .
+# Create a shortcut (link) for our executable file
+# Run the command:
+
+ln -svf /opt/.../bin/java /usr/bin/java
+
+# Instead ... write the name of the folder with Java - /opt/jdk-16.0.1+9/bin/java
+
+ln -svf /opt/jdk-16.0.1+9/bin/java /usr/bin/java
+
+# If you did everything right, then you have successfully installed Java on your machine
+```
+
+### Removing Java from our server
+- Many will say that there is a sudo apt remove *java* command, etc., but this is the easiest way - you can also use commands 
+```
+# First, let's go to the root of the server ~
+# Next, go to ~/usr/bin
+# We use a convenient way for you to search for files - it was convenient for me through the WinSCP Client
+# Find the file "Java" - it should be the only one in this directory!
+# Feel free to remove it without fear - Done, you have removed active Java from your server, however
+# It still exists as a folder and archive in ~/opt
+# Can be done via commands
+
+cd usr
+
+cd bin
+
+sudo rm java
+
+# You can check if Java is active by entering the command
+
+java-version
+
+# If successful, you should get a message that Java was not found
+```
+
+### Configuring secure server login - Linux
+- As an alternative to simple passwords, we will use rsa_keys SHA encryption
+
+- Generation and installation of keys on the server
+```
+# For Windows:
+# Open the PowerShell application, or whatever you may have
+
+ssh-keygen
+
+ssh-keygen -b 4096 # Generate a stronger key
+
+# Next, carefully read the logs, you have almost created a key pair on your PC ~/users/YourUser/.ssh
+
+# To transfer the key to our server, use this command (You will need to log in using the "old" password)
+
+cat ~/.ssh/id_rsa.pub | ssh USER@IP "mkdir -p ~/.ssh && touch ~/.ssh/authorized_keys && chmod -R go= ~/.ssh && cat >> ~/.ssh/authorized_keys"
+
+# ... USER@IP ...
+# Substitute your data for the pattern
+# USER - Login, your user on the server machine
+# IP - Your IP from the server machine
+
+
+# ATTENTION! We are starting to disable password authentication on the server, be careful
+# *The author is not responsible if you suddenly break the login to your server machine,
+# Be sure to back up your game servers*
+
+
+# Before doing this, make sure you have the packages installed:
+
+apt install sudo
+
+apt install nano
+
+# sudo - Should be used if your main user != root
+# nano - Convenient text editor via SSH
+
+# How to save a file via nano
+
+# CTRL + X , Y (yes), ENTER
+
+# Done, now you know how to save files, but still let's move on to disabling password authorization
+# Enter the command:
+
+sudo nano /etc/ssh/sshd_config
+
+# You need to find or write this line:
+
+PasswordAuthentication no
+
+# After we save the file (We use nano as a text file editor)
+# Next we need to restart the SSH client
+# < ! > We recommend checking SSH access < ! >
+# Return to PowerShell and type
+
+ssh USER@IP
+
+ssh USER@IP -i ./key
+
+# ... USER@IP
+# Substitute your data for the pattern
+# USER - Login, your user on the server machine
+# IP - Your IP from the server machine
+
+# Next, if everything is fine, restart ssh
+
+sudo systemctl restart ssh
+
+# Done, now you won't be able to access your server machine through passwords, we use only authorization keys (rsa)
+```
+
+### Various commands and benches you may need
+- Mainly suitable for monitoring and monitoring the life of your server machine
+```
+# System Information
+
+# Via benchmark
+
+sudo wget -qO-bench.sh | bash
+
+# Through neofetch (More convenient than the 1st option, but this option will not be able to show the speed)
+
+apt install neofetch
+
+neofetch
+```
+
+### IPTables - Close SSH port, SFTP (22)
+- I really don't recommend doing this with a dynamic IP, otherwise you risk losing access to your server machine
+```
+# Basic IPTables settings | Ping ban on your dedicated server | Deny login from other IPs via SSH (only yours)
+
+iptables -A INPUT -s IP/32 -p icmp -j DROP
+
+# Allow your ip to login via SSH, SFTP - THE ITEM TO DO FIRST OF ALL!
+
+iptables -A INPUT -p tcp --dport 22 -s YourIP -j ACCEPT
+
+# Drop port 22 (aka SSH, SFTP). <! > DO AFTER PERMISSION < ! >
+
+iptables -A INPUT -p tcp --dport 22 -j DROP
+
+# Installation
+
+apt-get install iptables-persistent
+
+# The iptables rules need to be created, then run the following command
+
+service iptables-persistent start
+
+# Since the utility is a daemon, it cannot be stopped, but you can clear the list of rules
+
+service iptables-persistent flush
+
+# Update rules if persistent was already set
+
+dpkg-reconfigure iptables-persistent
+```
+
+### IPTables - Closing ports on multiple server machines
+
+- Here you will learn in detail how to close ports easily and quickly
+```
+# Imagine that we have two VDS / VPS servers
+# The first server branded X - This will be our Proxy server (Filter of various bots, packets (TCP))
+# The second server branded Y - This will be our Survival server (Basic survival)
+# On the X server, write the following commands in the given order, as given (From top to bottom)
+
+iptables -A INPUT -s <IP Y> -j ACCEPT
+iptables -A INPUT -s 127.0.0.1 -j ACCEPT
+
+# On server Y, write the following commands in the given order, as given (From top to bottom)
+
+iptables -A INPUT -p tcp -s <IP X> --dport <PORT Y (Survival)> -j ACCEPT
+iptables -A INPUT -p tcp --dport <PORT Y (Survival)> -j DROP
+
+# After manipulations on each VDS / VPS, you need to enter this command
+
+apt install iptables-persistent
+
+# If you already have it installed, then just update the rules using the command
+
+dpkg-reconfigure iptables-persistent
+
+
+# If you want, you can also see the list of your iptables rules on each of the virtual machines
+
+iptables --list
+
+# Find out the numbers of all rules
+
+iptables -L --line-numbers
+
+# You can delete rules in the following way
+
+iptables -D INPUT NUMBER
+```
+
+### "WinRar" - Well-known archiver, but for Linux
+```
+# Installation
+apt install zip unzip
+
+# Where you need to create an archive - I have a folder / home
+cd home
+
+# Archiving a folder/file | Can be located in any path (You specify the specific path to the folder / file that you want to archive)
+zip -r NAME.zip /home/BungeeCord
+
+# For example in my case
+# /home - server folder directory
+# /BungeeCord - the bungee folder itself, you can use any for example: Survival, Anarchy, SkyBlock.
+
+zip -r surv.zip /home/Survival
+
+# If there is a SkyBlock folder with the server, then enter this command
+# You can specify any server, you can also store the server along the path /servers/BungeeCord
+# It is not necessary to use the /home partition for servers!
+
+zip -r sb.zip /home/SkyBlock
+
+# Or use the built-in tar
+```
+
+### MySQL - For Linux
+```
+# Installation
+sudo apt install mysql server
+
+# Login to the database itself
+sudo mysql
+
+# Create database
+
+CREATE DATABASE IF NOT EXISTS DATABASE_NAME;
+
+# Delete database
+
+DROP DATABASE IF EXISTS DATABASE_NAME;
+
+# Database list
+
+SHOW DATABASES;
+
+# Create user
+
+CREATE USER IF NOT EXISTS 'DATABASE_USER'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'DATABASE_USER_NEW_PASSWORD';
+
+# Change user password
+
+ALTER USER 'DATABASE_USER'@'localhost' IDENTIFIED WITH caching_sha2_password BY 'DATABASE_USER_NEW_PASSWORD';
+
+# Delete user
+
+DROP USER IF EXISTS 'DATABASE_USER'@'localhost';
+
+# List of users
+
+SELECT user, host FROM mysql.user;
+
+# Give the user rights to a specific database
+
+GRANT ALL PRIVILEGES ON database_name.table_name TO 'DATABASE_USER'@'localhost';
+
+# Give all rights to the user on all databases
+
+GRANT ALL PRIVILEGES ON *.* TO 'DATABASE_USER'@'localhost';
+
+# List of all database user rights
+
+SHOW GRANTS FOR 'DATABASE_USER'@'localhost';
+
+# Dump the entire database
+
+mysqldump -uDATABASE_USER -pDATABASE_USER_PASSWORD --all-databases > DATABASE_CUSTOM_DUMP_NAME.sql
+
+# Dump a specific database
+
+mysqldump -uDATABASE_USER -pDATABASE_USER_PASSWORD DATABASE_NAME > DATABASE_CUSTOM_DUMP_NAME.sql
+
+# If you want to copy your database dump to another location
+
+cp /var/lib/mysql/DATABASE_CUSTOM_DAMP_NAME.sql /home/testuser/
+```
+
+### Disable password for `$ sudo {cmd}`
+```
+# First create a file (do as root ~)
+
+sudo visudo -f /etc/sudoers.d/sudowpass
+
+# Enter the following into the file
+
+# You can replace $user
+$user ALL=(ALL) NOPASSWD:ALL
+
+```
+### SSH file transfer via `scp`
+```
+scp USER@IP :/path_for_file_to_other_server name_of_file_on_your_server
+
+# You will be prompted for a password, if you are using keys then add -i
+```
+
+# About creating a game server in Minecraft
+### Recommended software to run the server
+- If you are planning to develop a modded server, then I definitely recommend __[Fabric](https://fabricmc.net/)__
+> Mods can be found [here](https://modrinth.com/mods) or [here](https://www.curseforge.com/minecraft/mc-mods)
+- If you are planning to develop a regular server, then I definitely recommend __[PaperMC](https://papermc.io/) | [PurPur](https://purpurmc.org/)__
+> Recommended software For developing ___Proxy___ server __[Velocity](https://velocitypowered.com/) | [Velocity from PaperMC](https://papermc.io/)__
+
+### VDS/DEDICATED or PANEL HOSTING?
+- __Author__ of this post does not support panel hosts due to their usage restrictions. If you want to create a quality project, then please stick to using dedicated or virtual servers with full access to the __SSH__ protocol
+
+# About the author
+### What software is used to develop game projects (Server-side)
+- I use these software: __[Fabric](https://fabricmc.net/) | [PaperMC](https://papermc.io/) | [PurPur](https://purpurmc.org/) | [Pufferfish](https://ci.pufferfish.host/) | [Velocity](https://velocitypowered.com/)__
+> __Pufferfish Links:__ _[Docs](https://docs.pufferfish.host/) | [Github](https://github.com/pufferfish-gg/Pufferfish)_
+### What software is used to develop game clients (Client side)
+- I use this software: __[Fabric](https://fabricmc.net/)__
+### What software is used to connect to the server via SSH, SFTP
+- I use these softwares: [Termius (SSH Completely Free, SFTP Trial, then paid](https://termius.com/) [WinSCP (SFTP Completely Free)](https://winscp.net/eng/download .php)
+### On what I create Projects (PC/Laptop, OS)
+- It may seem strange to many, but I develop all my Projects on a laptop 
+- I am currently working on Windows 11 (I plan to create an image for Linux)
