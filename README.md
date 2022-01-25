@@ -573,7 +573,7 @@ sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 
 dnf install htop
 
-dnf installscreen
+dnf install screen
 ```
 
 ### Useful utilities for your server
@@ -620,7 +620,7 @@ sudo firewall-cmd --reload
 # -c | --create - create an archive
 # -a | --auto-compress - additionally compress the archive with a compressor that is automatically determined by the archive extension.
 # -r | --append - append files to the end of an existing archive
-#-x | --extract, --get - extract files from archive
+# -x | --extract, --get - extract files from archive
 # -f | --file - specify the name of the archive
 # -t | --list - display a list of files and folders in the archive
 # -v | --verbose - list processed files
@@ -804,13 +804,13 @@ sudo systemctl restart ssh
 ```
 
 ### Various commands and benches you may need
-- Mainly suitable for monitoring and monitoring the life of your server machine
+- Mainly suitable for monitoring and monitoring the health of your server machine
 ```
 # System Information
 
 # Via benchmark
 
-sudo wget -qO-bench.sh | bash
+sudo wget -qO -bench.sh | bash
 
 # Through neofetch (More convenient than the 1st option, but this option will not be able to show the speed)
 
@@ -868,7 +868,7 @@ iptables -A INPUT -s 127.0.0.1 -j ACCEPT
 iptables -A INPUT -p tcp -s <IP X> --dport <PORT Y (Survival)> -j ACCEPT
 iptables -A INPUT -p tcp --dport <PORT Y (Survival)> -j DROP
 
-# After manipulations on each VDS / VPS, you need to enter this command
+# After securing each VDS / VPS, you need to enter this command
 
 apt install iptables-persistent
 
@@ -895,7 +895,7 @@ iptables -D INPUT NUMBER
 # Installation
 apt install zip unzip
 
-# Where you need to create an archive - I have a folder / home
+# Where you need to create an archive - I have a folder /home
 cd home
 
 # Archiving a folder/file | Can be located in any path (You specify the specific path to the folder / file that you want to archive)
