@@ -333,12 +333,16 @@ apt install neofetch
 neofetch
 ```
 
-### IPTables - Закрытие порта SSH, SFTP (22)
+### IPTables - Закрытие порта SSH, SFTP (22) + ICMP DROP
 - На самом деле не рекомендую делать такое с динамическим IP, иначе вы рискуете потерять доступ к вашей серверной машине
 ```
 # Базовые настройки IPTables | Запрет пинга на ваш дедик | Запрет входа с других айпи по SSH (только ваш)
 
 iptables -A INPUT -s IP/32 -p icmp -j DROP
+
+# Или через FirewallD
+
+sudo firewall-cmd --add-icmp-block=echo-request --permanent
 
 # Разрешить свой айпи для входа через SSH,SFTP - ПУНКТ ДЕЛАТЬ ПЕРВЫМ ИЗ ВСЕХ!
 
