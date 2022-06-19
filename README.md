@@ -1,4 +1,5 @@
 # Продвинутое создание сервера
+ `> Данная статья будет немного переписана и вам станет проще ее изучать :)`
 
 ![image](https://user-images.githubusercontent.com/77334306/146064955-f7458d87-38c0-40dd-8634-e27dc2a150b5.png)
 ![image](https://user-images.githubusercontent.com/77334306/146064668-abc41204-a41e-40f8-a098-6a5a992ad5be.png)
