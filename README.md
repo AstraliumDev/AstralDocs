@@ -250,6 +250,9 @@ ssh-keygen -b 8192 # Генерация ключа с мощностью 8192 Б
 cat ~/.ssh/id_rsa.pub | ssh USER@IP "mkdir -p ~/.ssh && touch ~/.ssh/authorized_keys && chmod -R go= ~/.ssh && cat >> ~/.ssh/authorized_keys"
 
 # < ! > Подсказка для всех < ! >
+# Если вы не хотите использовать такой способ авторизации, то установите очень сильный, надежный, ультра мега крутоооой пароль :)
+# Самое главное не палите своего юзера, ведь только тогда вас не будут брутить, 
+# Т.к попросту не будут знать пользователя для старта брутфорса. Однако перейдем к нашим RSA ключикам.
 # Вы можете вручную просто вписать информацию из публичного RSA ключа в '~/.ssh/authorized_keys'
 # На своем устройстве получите информацию из файлы id_rsa.pub, например cat id_rsa.pub
 # Впишите данную информацию из файла id_rsa.pub в файл authorized_keys вашего юзера Linux '~/.ssh/authorized_keys'
@@ -598,17 +601,14 @@ sudo dpkg-reconfigure locales
 > Рекомендуемое ПО Для разработки ___Proxy___ сервера __[Velocity](https://velocitypowered.com/) | [Velocity с сайта PaperMC](https://papermc.io/)__
 
 ### VDS/DEDICATED или PANEL HOSTING?
-- __Автор__ данного поста не поддерживает панельные хосты из-за их ограничений пользования. Если вы хотите создать качественный Проект, то пожалуйста придерживайтесь использовать выделенных или виртуальных серверо с полным доступом к __SSH__ протоколу
+- __Автор__ данного поста не поддерживает панельные хосты из-за их ограничений для клиента. Если вы хотите создать качественный Проект, то пожалуйста придерживайтесь использовать выделенных или виртуальных серверо с полным доступом к __SSH__ протоколу
 
 # Об авторе
 ### Какое ПО используется для разработок игровых проектов (Сервер-сайд)
-- Я пользуюсь этими ПО: __[Fabric](https://fabricmc.net/) | [PaperMC](https://papermc.io/) | [PurPur](https://purpurmc.org/) | [Pufferfish](https://ci.pufferfish.host/) | [Velocity](https://velocitypowered.com/)__
-> __Pufferfish Links:__ _[Docs](https://docs.pufferfish.host/) | [Github](https://github.com/pufferfish-gg/Pufferfish)_
+- Я пользуюсь этими ПО: __[Fabric](https://fabricmc.net/) | [PaperMC](https://papermc.io/) | [PurPur](https://purpurmc.org/) | [Velocity](https://velocitypowered.com/)__
+
 ### Какое ПО используется для разработок игровых клиентов (Клиент-сайд)
 - Я пользуюсь этим ПО: __[Fabric](https://fabricmc.net/)__
+
 ### Какое ПО используется для подключения к серверу по SSH, SFTP
-- Я пользуюсь этими ПО на Windows: [Termius (SSH Полностью бесплано, SFTP Пробная версия, потом платно](https://termius.com/) [WinSCP (SFTP Полностью бесплатно)](https://winscp.net/eng/download.php)
-- На Linux использую обычный терминал Linux для `SSH` и FileZilla для `SFTP/FTP` подключений
-### На чем создаю Проекты (ПК/Ноут, LINUX OS)
-- Для многих это покажется странно, но я разрабатываю все свои Проекты на ноутбуке 
-- Работаю в данный момент на Manjaro Linux
+- Я пользуюсь этими ПО на Windows: [Termius (SSH Полностью бесплано, SFTP ~~Пробная версия~~ (Теперь бесплатно в FREE Plan :D), ~~потом платно~~](https://termius.com/) [WinSCP (SFTP)](https://winscp.net/eng/download.php)
