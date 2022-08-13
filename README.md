@@ -611,4 +611,4 @@ sudo dpkg-reconfigure locales
 - Я пользуюсь этим ПО: __[Fabric](https://fabricmc.net/)__
 
 ### Какое ПО используется для подключения к серверу по SSH, SFTP
-- Я пользуюсь этими ПО на Windows: [Termius (SSH Полностью бесплано, SFTP ~~Пробная версия~~ (Теперь бесплатно в FREE Plan :D), ~~потом платно~~](https://termius.com/) [WinSCP (SFTP)](https://winscp.net/eng/download.php)
+- Я пользуюсь этими ПО на Windows: [Termius (SSH Полностью бесплано, SFTP ~~Пробная версия~~ (Теперь бесплатно в FREE Plan :D), ~~потом платно~~](https://termius.com/) | [WinSCP (SFTP)](https://winscp.net/eng/download.php)
