@@ -163,8 +163,8 @@ tar -xvf archive.tar.gz
 # Например архив с Java называется:
 Скачиваем к примеру Adoptium JDK Java 18 под amd64 платформу (Ubuntu, Debian, Arch)
 
-# Данная команда скачает и установит вам Java JDK 18 от Adoptium, вам нужно лишь только ввести её в терминал
-cd /opt && sudo wget https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_x64_linux_hotspot_18.0.2_9.tar.gz && sudo tar -xvf OpenJDK18U-jdk_x64_linux_hotspot_18.0.2_9.tar.gz && ln -svf /opt/jdk-18.0.2+9/bin/java /usr/bin/java && java -version
+# Данная команда скачает и установит вам Java JDK 18.0.2.1_1 (Предыдущая была 18.0.2.9 (Старее)) от Adoptium, вам нужно лишь только ввести её в терминал
+cd /opt && sudo wget https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_x64_linux_hotspot_18.0.2.1_1.tar.gz && sudo tar -xf OpenJDK18U-jdk_x64_linux_hotspot_18.0.2.1_1.tar.gz && sudo ln -svf /opt/jdk-18.0.2.1+1/bin/java /usr/bin/java && java -version
 
 # < ! > Название архива может быть иное < ! >
 # Информацию об установке Java ниже можете не применять при вводе команды выше.
