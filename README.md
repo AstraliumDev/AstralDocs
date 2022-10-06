@@ -9,8 +9,22 @@
 
 ### Создайте свой личный Minecraft Проект с использованием продвинутой и удобной информации`
 
+# Что будет еще в след. обновлениях?
+### Плановые изменения по работе с Linux OS
+- Работа с системой (База от DIDIRUS)
+> Нацеленность будущего гайда исключительно для работы с вашим сервером Minecraft.
+
+- Продвинутая настройка Linux Firewall (База от DIDIRUS)
+> Настройки netfilter, nat с использованием утилиты iptables, возможно еще ufw. Исключительно для работы с вашим сервером Minecraft.
+
 ```
-Версия документа v3.1
+Вероятнее всего будет меньше информации о самой игре Minecraft, поскольку автору в данный момент не особо интересно это.
+Однако, Linux OS будет всегда с нами :)
+```
+
+# О документе
+```
+Версия документа v3.11 от 06.10.2022
 
 * Автор занят другими Проектами на Github, вы можете в данный момент получать дополнительную информацию *
 * Данная статья создана для удобства в управлении вашим Проектом в Minecraft под управлением Linux *
@@ -165,6 +179,9 @@ tar -xvf archive.tar.gz
 
 # Данная команда скачает и установит вам Java JDK 18.0.2.1_1 (Предыдущая была 18.0.2.9 (Старее)) от Adoptium, вам нужно лишь только ввести её в терминал
 cd /opt && sudo wget https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2.1%2B1/OpenJDK18U-jdk_x64_linux_hotspot_18.0.2.1_1.tar.gz && sudo tar -xf OpenJDK18U-jdk_x64_linux_hotspot_18.0.2.1_1.tar.gz && sudo ln -svf /opt/jdk-18.0.2.1+1/bin/java /usr/bin/java && java -version
+
+# Данная команда скачает и установит вам Java JDK 19+36 новейшая релизная Java от Adoptium, вам нужно лишь только ввести её в терминал
+cd /opt && sudo wget https://github.com/adoptium/temurin19-binaries/releases/download/jdk-19%2B36/OpenJDK19U-jdk_x64_linux_hotspot_19_36.tar.gz && sudo tar -xf OpenJDK19U-jdk_x64_linux_hotspot_19_36.tar.gz && sudo ln -svf /opt/jdk-19+36/bin/java /usr/bin/java && java -version
 
 # < ! > Название архива может быть иное < ! >
 # Информацию об установке Java ниже можете не применять при вводе команды выше.
