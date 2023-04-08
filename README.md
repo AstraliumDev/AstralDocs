@@ -177,10 +177,10 @@ tar -xvf OpenJDK17U-jdk_x64_linux_hotspot_17.0.6_10.tar.gz
 sudo wget TARGET_URL
 
 # Из примера выше
-## curl https://api.papermc.io/v2/projects/paper/versions/1.19.2/builds/125/downloads/paper-1.19.2-125.jar -o paper.jar
+curl https://api.papermc.io/v2/projects/paper/versions/1.19.4/builds/499/downloads/paper-1.19.4-499.jar -o paper.jar
 
 # В нашем случае это не PaperMC, а Java, поэтому:
-sudo wget https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.2%2B9/OpenJDK18U-jdk_x64_linux_hotspot_18.0.2_9.tar.gz
+sudo wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.6%2B10/OpenJDK17U-jdk_x64_linux_hotspot_17.0.6_10.tar.gz
 
 # Также можно использовать утилиту CURL, заместо WGET
 sudo curl ссылка -o выходной_файл.расширение
