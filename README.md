@@ -1,6 +1,6 @@
 
 ![AstGuide.png](https://i.imgur.com/vQ8j1NO.png)
-# О Мини-Проекте AdvancedServerCreation
+# О Мини-Проекте AstralLinuxGuide
 ### Плановые изменения по работе с Linux OS
 - Конфигурации для Minecraft ( **_Folia_** by PaperMC ) от **VuTuV и DIDIRUS**
 - Продвинутые конфигурации AntiXray под каждый мир **_( PaperMC )_** от **VuTuV**
