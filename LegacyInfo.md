@@ -1,17 +1,19 @@
 ![AstGuide.png](https://i.imgur.com/vQ8j1NO.png)
 
 # Дополнительная информация о данном LegacyInfo.md
-```
-Здесь будут опубликованы неактуальные команды/утилиты, чтобы не засорять основной README.md
+- Здесь будут опубликованы неактуальные команды/утилиты, чтобы не засорять основной README.md
 
-Данная статья рассчитана на настройку под Ubuntu (рекомендуется) / Debian.
-В случае если у вас Arch Linux или другие UNIX подобные системы - Ознакомьтесь с репозиторием необходимых пакетов.
-Если необходимые пакеты отсутствуют, то попробуйте найти их в AUR/Snap/Flatpak.
-В случае с AUR изучайте билд скрипт для вашей же безопасности.
 
-Некоторые функции могут не работать конкретно на вашей системе. В этом случае не нужно винить автора статьи.
-За подробной поддержкой обращайтесь в мой дискорд Astralium Org. - https://discord.gg/7XkGYJbtZg
-```
+- Данная статья рассчитана на настройку под Ubuntu / Debian. Основные рекомендации также могут быть применены для ARM
+  систем. Однако, если у вас Arch Linux или другие Unix системы - пожалуйста ознакомьтесь с документацией по установке
+  пакетов на эту ОС или поищите альтернативные пакеты.
+
+
+- < NOTICE > Для AUR репозиториев настоятельно рекомендуется проверять исходники скрипта установки. В любом случае это
+  рекомендуется делать и для других репозиториев.
+
+
+- < NOTICE > Некоторые функции могут работать неправильно или вовсе не работать на вашей системе.
 
 ### Специально для CentOS 8 (Не поддерживается автором статьи)
 ```
@@ -78,4 +80,109 @@ zip -r surv.zip /home/Survival
 zip -r sb.zip /home/SkyBlock
 
 # Либо используйте встроенный tar
+```
+
+### IPTables (UFW/FIREWALLD) - Закрытие порта SSH, SFTP (22) + ICMP DROP
+
+- На самом деле не рекомендую делать такое с динамическим IP, иначе вы рискуете потерять доступ к вашей серверной машине
+
+```
+# Быстродействие (Без закрытия SSH порта):
+# sudo apt install ufw && sudo ufw allow 22/tcp && sudo nano /etc/ufw/before.rules
+# Для before.rules:
+
+# ok icmp codes for INPUT
+-A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type time-exceeded -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type parameter-problem -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT
+
+# ИЗМЕНИТЬ НА СЛЕДУЮЩЕЕ ЗНАЧЕНИЯ ufw-before-input
+# ok icmp codes for INPUT
+-A ufw-before-input -p icmp --icmp-type destination-unreachable -j DROP
+-A ufw-before-input -p icmp --icmp-type time-exceeded -j DROP
+-A ufw-before-input -p icmp --icmp-type parameter-problem -j DROP
+-A ufw-before-input -p icmp --icmp-type echo-request -j DROP
+
+# Сохраняем конфигурацию через наш nano редактор (CTRL X + Y + ENTER)
+# Перезагружаем UFW
+
+sudo ufw reload
+
+# Теперь все пинги блокируются извне
+
+# Ниже представлена информация из документации v2.0 (Прошлая)
+
+# Базовые настройки IPTables | Запрет пинга на ваш дедик | Запрет входа с других айпи по SSH (только ваш)
+
+iptables -A INPUT -s IP/32 -p icmp -j DROP
+
+# Или через FirewallD
+
+sudo firewall-cmd --add-icmp-block=echo-request --permanent
+
+# Разрешить свой айпи для входа через SSH,SFTP - ПУНКТ ДЕЛАТЬ ПЕРВЫМ ИЗ ВСЕХ!
+
+iptables -A INPUT -p tcp --dport 22 -s YourIP -j ACCEPT
+
+# Дропнуть порт 22 (aka SSH, SFTP). < ! > ДЕЛАТЬ ПОСЛЕ РАЗРЕШЕНИЯ < ! >
+
+iptables -A INPUT -p tcp --dport 22 -j DROP
+
+# Установка
+
+apt-get install iptables-persistent
+# Можно обойтись без этого и просто настроить восстановление правил IPTables через crontab :)
+
+# Правила iptables необходимо создать, затем выполнить следующую команду
+
+service iptables-persistent start
+
+# Поскольку утилита является демоном — прекратить ее работу нельзя, однако можно очистить список правил
+
+service iptables-persistent flush
+
+# Обновить правила, если persistent уже был установлен
+
+dpkg-reconfigure iptables-persistent
+```
+
+### IPTables - Закрытие портов на нескольких серверных машинах
+
+- Здесь вы подробно узнаете как легко и быстро закрыть порты
+
+```
+# Представим что у нас есть два сервера VDS / VPS
+# Первый сервер под маркой X - Это у нас будет Proxy сервер (Фильтр различных ботов, пакетов (TCP))
+# Второй сервер под маркой Y - Это у нас будет Survival сервер (Основное выживание)
+# На сервере X пропишите следующие команды в данном порядке, как они даны (Свреху вниз)
+
+iptables -A INPUT -s <IP Y> -j ACCEPT
+iptables -A INPUT -s 127.0.0.1 -j ACCEPT
+
+# На сервере Y пропишите следующие команды в данном порядке, как они даны (Сверху вниз)
+
+iptables -A INPUT -p tcp -s <IP X> --dport <PORT Y (Survival)> -j ACCEPT
+iptables -A INPUT -p tcp --dport <PORT Y (Survival)> -j DROP
+
+# После манипуляций на каждом VDS / VPS нужно ввести данную команду
+
+apt install iptables-persistent
+
+# Если у вас он уже был установлен, то просто обновите правила используя команду
+
+dpkg-reconfigure iptables-persistent
+
+
+# Если хотите можете также ознакомиться со списком ваших правил iptables на каждой из виртуальных машин
+
+iptables --list
+
+# Узнать номера всех правил
+
+iptables -L --line-numbers
+
+# Удалять правила можно следующим способом
+
+iptables -D INPUT ЧИСЛО
 ```
