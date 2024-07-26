@@ -1,25 +1,26 @@
 ![AstGuide.png](https://i.imgur.com/vQ8j1NO.png)
 
-# Вступление AstralLinuxGuide (Unix System's)
+# Вступление AstralDocs • Специальное пособие/шпаргалка для быстрых действий
 
 ### Последние изменения в этом репозитории
 
-- [От <\/didirus>](https://github.com/DIDIRUS4) добавлена базовая информация по работе с nft \(nftables - современная
-  утилита на замену iptables\).
-- [От <\/didirus>](https://github.com/DIDIRUS4) небольшие изменения в дизайне и стиле этого репозитория.
+- [От <\/didirus>](https://github.com/DIDIRUS4) проведен рефакторинг путей
+- [От <\/didirus>](https://github.com/DIDIRUS4) сортировка информации после рефакторинга
+- [От <\/didirus>](https://github.com/DIDIRUS4) добавление некоторых пакетов в LEGACY раздел
 
 # Дополнительная информация
 
-- [MinecraftRecommendations.md](MinecraftRecommendations.md)
-- [VanillaIssues.md](VanillaIssues.md)
-- [LegacyInfo.md](LegacyInfo.md)
+- [SOFTWARE.md](SOFTWARE.md)
+- [PERFORMANCE.md](PERFORMANCE.md)
+- [LEGACY.md](LEGACY.md)
 
 # Дополнительная информация о данном README.md
 
-### Версия документа v3.3 от 24.10.2023
+### Версия документа v3.4 от 27.07.2024
 
 - Данная статья рассчитана на настройку под Ubuntu / Debian. Основные рекомендации также могут быть применены для ARM
-  систем. Однако, если у вас Arch Linux или другие Unix системы - пожалуйста ознакомьтесь с документацией по установке
+  систем.
+- Если у вас Arch Linux или другие Unix подобные системы - пожалуйста ознакомьтесь с документацией по установке
   пакетов на эту ОС или поищите альтернативные пакеты.
 
 
@@ -30,10 +31,10 @@
 - < NOTICE > Некоторые функции могут работать неправильно или вовсе не работать на вашей системе.
 
 ### Ссылки на нас
-- [Наш Telegram](https://t.me/AstraliumOrg)
-- [Наш Discord](https://discord.gg/7XkGYJbtZg)
+- [Наш Telegram](https://astralium.su/f/telegram/astralium)
+- [Наш Discord](https://astralium.su/f/discord/astralium)
 - [Наш Сайт](https://www.astralium.su)
-- [Наш Github](https://github.com/AstraliumMC)
+- [Наш Github](https://astralium.su/f/github/astralium)
 
 # Основные ссылки на контент
 
@@ -43,6 +44,8 @@
 
 [Получить Paper/Folia/Velocity](https://papermc.io/) __| Нажмите, чтобы скачать PaperMC Software |__
 
+[Получить ShreddedPaper](https://multipaper.io/shreddedpaper/download.html) __| Нажмите, чтобы скачать MultiPaper Software |__
+
 # Настройка вашего Linux сервера
 
 ### Основное
@@ -50,6 +53,22 @@
 - Основные рекомендуемые компоненты для вашей системы Linux.
   В основном все команды выполняются от `root` пользователя или с помощью `sudo` *(Если `sudo` отсутствует на вашей
   системе, то установите его через `apt` / `pamac` / `pacman` или альтернативную команду на вашей системе)*
+- Для навигации по большинству терминальных команд вы можете использовать утилиту `man`, например `man man` расскажет что такое man
+```
+NAME
+     man, apropos, whatis – display online manual documentation pages
+
+SYNOPSIS
+     man [-adho] [-t | -w] [-M manpath] [-P pager] [-S mansect] [-m arch[:machine]] [-p [eprtv]] [mansect] page ...
+```
+- Некоторые команды не имеют документации, но возможно к ним можно обратиться через аргумент --help, например `man --help`
+```
+Usage:
+ man [-adho] [-t | -w] [-M manpath] [-P pager] [-S mansect]
+     [-m arch[:machine]] [-p [eprtv]] [mansect] page [...]
+ man -f page [...] -- Emulates whatis(1)
+ man -k page [...] -- Emulates apropos(1)
+```
 
 ### Обновление пакетов машины
 
@@ -61,15 +80,8 @@
 ### Полезные утилиты для вашего сервера
 
 - htop - Утилита для мониторинга всех запущенных процессов
-- ~atop - Считайте практически идентичным ПО, что и утилита выше
-- ~~gtop - Считайте практически идентичным ПО, что и утилита выше
 - screen - Важная утилита для создания сессий на вашей серверной машине
-- ~zip unzip - Утилита для архивации/разархивации файлов в .zip (рекомендую tarball'ы (.tar.gz))
-- ~iptables - Полезная утилита для настройки Netfilter & FireWall вашей системы
-- ~ufw - Управление Firewall'ом IPTables, только проще
-- ~firewalld - Управление Firewall'ом IPTables, только проще
 - nftables - Управление Netfilter & FireWall системы (рекомендую)
-- ~iptraf-ng - Мониторинг сети
 - nload - Мониторинг сети в виде графика (рекомендую)
 - vnstat - Мониторинг сети с выводом скорости и пакетов (рекомендую)
 - wireshark - Продвинутое ПО для мониторинга трафика ваших сетевых интерфейсов с возможностью создания дампов .pcap (
@@ -77,23 +89,11 @@
 - smartmontools - Позволяет протестировать оборудование системы (физические накопители HDD, SDD) (рекомендую)
 - dnsutils - Управление DNS (Может потребоваться для некоторых утилит)
 - neofetch - Утилита для красивого отображения вашей ОС и некоторых параметров
-- ~fontconfig - Данный пакет шрифтов может потребоваться для некоторых утилит*
 
-### Удобная установка всех полезных пакетов в одну строку + FIREWALLD (Работает с IPTables)
 
-- `sudo apt update -y && sudo apt upgrade -y && sudo apt install htop screen ufw vnstat zip unzip iptables nload neofetch dnsutils iptraf-ng vnstat fontconfig smartmontools firewalld -y`
+### Удобная установка стартовых пакетов с nftables
 
-### Удобная установка всех полезных пакетов в одну строку + UFW (Работает с IPTables)
-
-- `sudo apt update -y && sudo apt upgrade -y && sudo apt install htop screen ufw vnstat zip unzip iptables nload neofetch dnsutils iptraf-ng vnstat fontconfig smartmontools ufw -y`
-
-### Удобная установка всех полезных пакетов в одну строку только с IPTables
-
-- `sudo apt update -y && sudo apt upgrade -y && sudo apt install htop screen vnstat zip unzip iptables nload neofetch dnsutils iptraf-ng vnstat fontconfig smartmontools -y`
-
-### Удобная установка всех НЕОБХОДИМЫХ (не все пакеты с префиксом '~' включены) пакетов в одну строку с NFTables
-
-- `sudo apt update -y && sudo apt upgrade -y && sudo apt install htop screen vnstat nftables nload neofetch iptraf-ng vnstat smartmontools -y`
+- `sudo apt update -y && sudo apt upgrade -y && sudo apt install htop screen nftables nload neofetch vnstat smartmontools -y`
 
 # Установка Java на вашу серверную машину
 
@@ -556,7 +556,7 @@ usermod -aG sudo $name
 кроме 22*, однако мы рекомендуем вручную открыть SSH/SFTP порт. Внимательно смотрите стандартные политики, которые ставятся вместе с пакетом при устанвоке
 ```
 
-# О создании игрового сервера в Minecraft
+# Раздел для информации о Minecraft client/server стороне
 
 ### Рекомендуемое ПО для запуска сервера
 
@@ -570,33 +570,15 @@ usermod -aG sudo $name
 > Плагины можно найти [на этой платформе](https://modrinth.com/plugins)
 > Подробнее узнать доп. информацию
 
-- [MinecraftRecommendations.md](MinecraftRecommendations.md)
+- [SOFTWARE.md](SOFTWARE.md)
 
-### VIRTUAL/DEDICATED или PANEL сервер?
-
+### Про панельные хостинги VS виртуальные & выделенные сервера
 - __Автор__ данного поста НЕ ПОДДЕРЖИВАЕТ низкокачественные панельные хосты из-за их серьезных ограничений или
   уязвимостей. Если вы хотите создать
   качественный Проект, то вам определенно стоит присмотреться к использованию выделенных (dedicated) или виртуальных (
   virtual dedicated/private) серверов с полным
   доступом SSH (Secure Shell).
-
-# Об авторе
-
-### Какое ПО используется для разработок игровых проектов (Сервер-сайд)
-
-- Я пользуюсь этим ПО: __[Fabric](https://fabricmc.net/) | [PaperMC](https://papermc.io/)__
-
-### Какое ПО используется для разработок игровых клиентов (Клиент-сайд)
-
-- Я пользуюсь этим ПО: __[Fabric](https://fabricmc.net/)__
-
-### Какое ПО используется для подключения к серверу по SSH, SFTP
-
-- Я пользовался этими ПО на Windows: __[Termius](https://termius.com/) | [WinSCP](https://winscp.net/eng/download.php)__
-- Мое любимое ПО для Linux систем: __[Dolphin](https://apps.kde.org/ru/dolphin/) | [Yakuake](https://apps.kde.org/ru/yakuake/) | [Konsole](https://apps.kde.org/ru/konsole/) | [Nautilus](https://apps.gnome.org/Nautilus/)__
-- Мое любимое ПО для MacOS: __Finder | Terminal | Terminal | Console__
-- Глобальное свободное ПО, которое я бы рекомендовал к использованию: __Termius | FileZilla | DBeaver | VSCode |
-  Intellij IDEA | JetBrains ToolBox__
+- Использования контейнеризации на виртуальных или выделенных серверах приветствуется, но именно приобретение чисто контейнеров от ноунеймов - сразу же строго нет!
 
 # Disclaimer, as well as dedicated to copyright lovers <3
 - Any mention &| exploitation of third-party resources &| products doesn't actually violate the copyrights of the companies &| organizations to which they belong, since all information in writing or software form types can be found in open sources of search engines, for example Yandex & Google.
